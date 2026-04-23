@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rms-ag-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: singapore   # Closest to India
+    plan: free
+    envVars:
+      - key: SUPABASE_DB_PASSWORD
+        sync: false       # You'll enter this in the Render dashboard
+      - key: PORT
+        value: "8082"
+    healthCheckPath: /actuator/health
+    autoDeploy: true
